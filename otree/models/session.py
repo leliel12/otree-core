@@ -86,16 +86,7 @@ class Session(ModelWithVars):
     def use_browser_bots(self):
         return self.participant_set.filter(is_browser_bot=True).exists()
 
-    # if the user clicks 'start bots' twice, this will prevent the bots
-    # from being run twice.
-    _cannot_restart_bots = models.BooleanField(default=False)
-    _bots_finished = models.BooleanField(default=False)
-    _bots_errored = models.BooleanField(default=False)
-
     is_demo = models.BooleanField(default=False)
-
-    # whether SOME players are bots
-    has_bots = models.BooleanField(default=False)
 
     _admin_report_app_names = models.TextField(default='')
     _admin_report_num_rounds = models.CharField(default='', max_length=255)

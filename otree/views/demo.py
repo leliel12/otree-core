@@ -68,4 +68,6 @@ class CreateDemoSession(vanilla.GenericView):
             'num_participants': session_config['num_demo_participants']
         }
 
-        return create_session_and_redirect(session_kwargs)
+        use_browser_bots = session_config.get('use_browser_bots', False)
+        return create_session_and_redirect(
+            session_kwargs, use_browser_bots=use_browser_bots)
